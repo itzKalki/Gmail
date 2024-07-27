@@ -4,7 +4,24 @@ import viteLogo from "/vite.svg";
 // import "./App.css";
 import Navbar from "./components/Navbar";
 import SideBars from "./components/SideBars";
-import Email from "./components/Email";
+import Inbox from "./components/Inbox";
+import Body from "./components/Body";
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Body />,
+    children: [
+      {
+        path: "/",
+        element: <Inbox />
+      },
+      {
+        path: "/mail/:id",
+        element: <Mail />
+      },
+    ]
+  },
+])
 function App() {
   const [count, setCount] = useState(0);
 
@@ -13,7 +30,7 @@ function App() {
       <Navbar></Navbar>
       <div className="flex">
         <SideBars></SideBars>
-        <Email></Email>
+        <Inbox></Inbox>
       </div>
     </div>
   );
